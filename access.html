@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera and Microphone Access</title>
+</head>
+<body>
+  <h1>Camera and Microphone Access</h1>
+  <p>If you are on mobile, please allow camera and microphone access.</p>
+  
+  <script>
+    // Function to request camera and microphone access
+    async function requestMediaAccess() {
+      try {
+        // Request user media (camera and microphone)
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        
+        // Create a video element to show the camera feed
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.autoplay = true;
+        document.body.appendChild(video);
+        
+        console.log('Camera and microphone access granted');
+      } catch (error) {
+        console.error('Error accessing camera and microphone:', error);
+      }
+    }
+    
+    // Request access when the page loads
+    window.onload = requestMediaAccess;
+  </script>
+</body>
+</html>
